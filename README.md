@@ -28,18 +28,51 @@ $ cmake .
 $ make
 ```
 
-# Java アプリケーションの起動
+# プロファイリング
+
+## Java アプリケーションの起動
 
 * https://github.com/Takaichi00/quarkus-sample で生成した jar を使用
 
 ```
 $ ./mvnw clean package -DskipTests=true
 $ java -XX:+PreserveFramePointer -jar quarkus-sample 0.0.1-SNAPSHOT
+$ java -jar target/quarkus-sample-0.0.1-SNAPSHOT-runner.jar
 
 ※ MySQL を用意していないためエラーが発生するが、叩けるエンドポイントは存在するのでここでは無視
 ```
 
+## FlameScope のインストール
 
+```
+# pip がない場合は install
+$ sudo yum install -y phython3
+$ sudo yum install -y pip3
+
+$ git clone https://github.com/Netflix/flamescope
+$ cd flamescope
+$ sudo pip3 install -r requirements.txt
+$ python3 run.py
+```
+
+## プロファイルの実施
+
+```
+$ jps | grep quarkus
+7224 quarkus-sample-0.0.1-SNAPSHOT-runner.jar
+
+$ ./create-java-perf-map.sh 7224
+$ ll /tmp/perf-7224.map
+
+$ sudo perf record -F 49 -a -g -- sleep 30
+
+$ ls -l perf.data
+$ sudo perf script --header > stacks.log
+
+$ mv stacks.log ~/flamescope/examples/
+```
+
+* "hostname":5000 にアクセスすると、Profile が UI で確認できる
 
 # 参考文献
 
