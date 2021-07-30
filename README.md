@@ -36,8 +36,7 @@ $ make
 
 ```
 $ ./mvnw clean package -DskipTests=true
-$ java -XX:+PreserveFramePointer -jar quarkus-sample 0.0.1-SNAPSHOT
-$ java -jar target/quarkus-sample-0.0.1-SNAPSHOT-runner.jar
+$ java -XX:+PreserveFramePointer -jar target/quarkus-sample-0.0.1-SNAPSHOT-runner.jar
 
 ※ MySQL を用意していないためエラーが発生するが、叩けるエンドポイントは存在するのでここでは無視
 ```
@@ -58,6 +57,7 @@ $ python3 run.py
 ## プロファイルの実施
 
 ```
+$ cd ~/perf-map-agent/bin
 $ jps | grep quarkus
 7224 quarkus-sample-0.0.1-SNAPSHOT-runner.jar
 
@@ -73,6 +73,8 @@ $ mv stacks.log ~/flamescope/examples/
 ```
 
 * "hostname":5000 にアクセスすると、Profile が UI で確認できる
+
+![flamescope-sample](./img/flamescope-sample.png)
 
 # 参考文献
 
