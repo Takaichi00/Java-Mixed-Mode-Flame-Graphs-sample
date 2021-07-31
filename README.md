@@ -54,7 +54,13 @@ $ sudo pip3 install -r requirements.txt
 $ python3 run.py
 ```
 
-## プロファイルの実施
+## FlameGraph のインストール
+
+```
+$ git clone https://github.com/brendangregg/FlameGraph.git
+```
+
+## プロファイルの実施 (FlamaScope)
 
 ```
 $ cd ~/perf-map-agent/bin
@@ -76,5 +82,22 @@ $ mv stacks.log ~/flamescope/examples/
 
 ![flamescope-sample](./img/flamescope-sample.png)
 
+## FlameGraph
+
+```
+$ sudo bash
+# perf record -F 49 -a -g -- sleep 30; ./FlameGraph/jmaps
+# perf script > out.stacks01
+# cat out.stacks01 | ./FlameGraph/stackcollapse-perf.pl | grep -v cpu_idle | \
+    ./FlameGraph/flamegraph.pl --color=java --hash > out.stacks01.svg
+```
+
+* svg を見ると、解析情報を見ることが可能
+
+![flamegraph-sample](./img/flamegraph-sample.png)
+
 # 参考文献
 
+* [Java でつくる低レイテンシ実装の技巧](https://www.slideshare.net/nappa_zzz/java-70326737)
+
+* [CPU Flame Graphs](https://www.brendangregg.com/FlameGraphs/cpuflamegraphs.html#Java)
