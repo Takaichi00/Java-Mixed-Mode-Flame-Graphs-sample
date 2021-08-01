@@ -98,6 +98,12 @@ $ sudo bash
 
 # 参考文献
 
-* [Java でつくる低レイテンシ実装の技巧](https://www.slideshare.net/nappa_zzz/java-70326737)
+* [Java in Flames](https://netflixtechblog.com/java-in-flames-e763b3d32166)
 
 * [CPU Flame Graphs](https://www.brendangregg.com/FlameGraphs/cpuflamegraphs.html#Java)
+
+* [Java でつくる低レイテンシ実装の技巧](https://www.slideshare.net/nappa_zzz/java-70326737)
+
+* [Java Mixed-Mode Flame Graphs で Java の CPU ネックをフルスタックで分析する](https://yohei-a.hatenablog.jp/entry/20160506/1462536427)
+
+* [FlameScopeを使ってJavaアプリのパフォーマンス可視化](https://blog.motikan2010.com/entry/2018/04/22/FlameScopeを使ってJavaアプリのパフォーマンス可視化)
