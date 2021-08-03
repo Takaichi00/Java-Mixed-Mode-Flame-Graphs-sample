@@ -87,7 +87,7 @@ $ mv stacks.log ~/flamescope/examples/
 ```
 $ sudo bash
 # perf record -F 49 -a -g -- sleep 30; ./FlameGraph/jmaps
-# perf script > out.stacks01
+# perf script -f > out.stacks01
 # cat out.stacks01 | ./FlameGraph/stackcollapse-perf.pl | grep -v cpu_idle | \
     ./FlameGraph/flamegraph.pl --color=java --hash > out.stacks01.svg
 ```
